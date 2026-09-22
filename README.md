@@ -29,3 +29,15 @@ src/
 
 Cada módulo sigue la misma forma: `dominio/` (entidades + interfaz del repositorio), `dto/`,
 `infra/` (repositorio en memoria) y el token de inyección en `<módulo>.tokens.ts`.
+
+Preguntas:
+- ¿Por qué el paquete del adaptador se llama adapter-mariadb si usamos MySQL?
+Por que MariaDB es un derivado directo de MySQL
+- ¿Editar schema.prisma cambió algo en la base de datos antes de migrar?
+No, por que el archivo schema.prisma es solo configuracion local en el codigo. La base de datos real no sufre ninguna cambio hasta que se ejecuta el comando de migracion
+- ¿La carpeta de migraciones es una foto del esquema o un historial?
+Es un historial
+- ¿Por qué Horario.clase sí crea columna y Clase.horarios no?
+Porque Horario es el lado que guarda la llave foranea y que tiene el atributo @relation
+- ¿De dónde sale la relación de muchos a muchos entre Miembro y Horario, si nunca se declaró?
+De el modelo Inscripcion
